@@ -2,11 +2,15 @@
 
 Zaawansowany bot tradingowy dla XAUUSD+ (złoto) z automatycznym scalpingiem i predykcją rynku.
 
+## ⚠️ IMPORTANT DISCLAIMER
+
+**This bot is designed to TARGET high accuracy (85-90%+) but actual results will vary based on market conditions, broker spreads, configuration, and many other factors. Past performance and backtesting results do not guarantee future performance. Trading carries significant risk of loss. Always test thoroughly on demo accounts before considering live trading.**
+
 ## 🎯 Główne Funkcje
 
 - **Scalping Strategy**: Szybkie transakcje z automatycznym zamykaniem na zysku
 - **Predykcja Rynku**: Analiza co sekundę z użyciem ML i wskaźników technicznych
-- **90%+ Skuteczność**: Zaawansowane algorytmy dla wysokiej dokładności
+- **Target Accuracy**: Zaawansowane algorytmy celujące w wysoką dokładność (85-90%+)
 - **5 Pozycji Jednocześnie**: Maksymalizacja możliwości przy zachowaniu kontroli
 - **100% Wykorzystanie Środków**: Każda pozycja = 20% konta (5 x 20% = 100%)
 - **Automatyczne Zamykanie**: Target profit +5% dla każdej pozycji
@@ -165,12 +169,19 @@ LOG_LEVEL = "INFO"  # DEBUG, INFO, WARNING, ERROR
 
 ## ⚠️ Disclaimer
 
-**OSTRZEŻENIE**: Trading na rynku Forex i kontraktach CFD jest ryzykowny i może prowadzić do utraty kapitału. Ten bot jest narzędziem edukacyjnym i nie stanowi porady inwestycyjnej. Używaj na własne ryzyko.
+**OSTRZEŻENIE RYZYKA**: Trading na rynku Forex i kontraktach CFD jest wysoce ryzykowny i może prowadzić do całkowitej utraty kapitału. 
 
-- Autor nie ponosi odpowiedzialności za straty
-- Przeszłe wyniki nie gwarantują przyszłych zysków
-- Zawsze testuj na koncie demo przed użyciem prawdziwych pieniędzy
-- Trading automatyczny wymaga monitorowania
+**Ważne informacje:**
+- Ten bot jest narzędziem edukacyjnym i eksperymentalnym
+- NIE stanowi porady inwestycyjnej ani gwarancji zysków
+- Podane cele dokładności (85-90%+) są celami projektowymi, nie gwarancjami
+- Rzeczywiste wyniki będą się znacznie różnić w zależności od warunków rynkowych
+- Przeszłe wyniki NIE gwarantują przyszłych zysków
+- Bot wykorzystuje agresywne ustawienia (100% kapitału, brak stop loss)
+- Autor nie ponosi odpowiedzialności za jakiekolwiek straty finansowe
+- ZAWSZE testuj na koncie demo przez co najmniej 2-4 tygodnie przed rozważeniem live trading
+- Trading automatyczny wymaga ciągłego monitorowania, szczególnie podczas major news events
+- Rozważ konsultację z licencjonowanym doradcą finansowym przed rozpoczęciem tradingu
 
 ## 📞 Wsparcie
 

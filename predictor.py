@@ -8,7 +8,7 @@ import pandas as pd
 from ta.trend import EMAIndicator, MACD
 from ta.momentum import RSIIndicator
 from ta.volatility import AverageTrueRange
-from ta.volume import VolumeWeightedAveragePrice
+
 from sklearn.ensemble import RandomForestClassifier
 import config
 
@@ -179,9 +179,10 @@ class MarketPredictor:
         else:
             signal_confidence = 0
         
-        # Only trade with high confidence (90%+ target)
+        # Only trade with high confidence to maximize win rate
         min_confidence = 0.75
         
+        # prediction == 1 means UP, prediction == 0 means DOWN
         if prediction == 1 and bullish_signals > bearish_signals:
             if confidence > min_confidence and signal_confidence > 0.5:
                 return 1, confidence  # BUY
@@ -194,11 +195,14 @@ class MarketPredictor:
     def get_current_accuracy(self):
         """
         Calculate current prediction accuracy
+        Returns accuracy percentage based on recent predictions
         """
         if len(self.accuracy_history) < 10:
             return 0.0
         
-        recent_accuracy = self.accuracy_history[-100:]
+        # Use up to last 100 predictions, or all if less than 100
+        sample_size = min(100, len(self.accuracy_history))
+        recent_accuracy = self.accuracy_history[-sample_size:]
         return sum(recent_accuracy) / len(recent_accuracy) * 100
     
     def update_accuracy(self, prediction, actual_result):

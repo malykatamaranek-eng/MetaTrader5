@@ -175,8 +175,11 @@ class PositionManager:
             if position.magic != config.MAGIC_NUMBER:
                 continue
             
-            # Calculate profit percentage
-            profit_percent = (position.profit / (position.volume * position.price_open)) * 100
+            # Calculate profit percentage (profit / position value)
+            # Position value = volume * contract_size * price
+            contract_size = 100  # Standard for XAUUSD (100 troy ounces)
+            position_value = position.volume * contract_size * position.price_open
+            profit_percent = (position.profit / position_value) * 100
             
             # Close if profit target reached
             if profit_percent >= config.PROFIT_TARGET_PERCENT:
@@ -210,11 +213,11 @@ class PositionManager:
             "type": order_type,
             "position": position.ticket,
             "price": price,
-            "deviation": 20,
+            "deviation": 100,  # Increased for gold volatility (1.00 dollar)
             "magic": config.MAGIC_NUMBER,
             "comment": "Close by profit target",
             "type_time": mt5.ORDER_TIME_GTC,
-            "type_filling": mt5.ORDER_FILLING_IOC,
+            "type_filling": mt5.ORDER_FILLING_RETURN,  # Try to fill at best price
         }
         
         # Send close order

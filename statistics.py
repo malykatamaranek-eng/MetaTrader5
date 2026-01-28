@@ -139,7 +139,12 @@ def monitor_positions():
     for pos in bot_positions:
         pos_type = "BUY" if pos.type == 0 else "SELL"
         current_price = pos.price_current
-        profit_pct = (pos.profit / (pos.volume * pos.price_open)) * 100
+        
+        # Calculate profit percentage correctly
+        # Position value = volume * contract_size * price
+        contract_size = 100  # Standard for XAUUSD (100 troy ounces)
+        position_value = pos.volume * contract_size * pos.price_open
+        profit_pct = (pos.profit / position_value) * 100
         
         print(f"{pos.ticket:<12} {pos_type:<6} {pos.volume:<8.2f} {pos.price_open:<10.2f} "
               f"{current_price:<10.2f} ${pos.profit:<9.2f} {profit_pct:>6.2f}%")
